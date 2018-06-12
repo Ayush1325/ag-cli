@@ -9,14 +9,14 @@ def main():
 
 
 @main.command()
-@click.option("--name", help="Create App.")
+@click.option("--name", help="Create App.", required=True)
 @click.option("--path", default="", help="Path for creating the app.")
 def app(name, path):
     app_create(name, path)
 
 
 @main.command()
-@click.option("--name", help="Create Component.")
+@click.option("--name", help="Create Component.", required=True)
 @click.option("--path", default="lib/src", help="Path for creating the Component.")
 def comp(name, path):
     comp_create(name, path)
