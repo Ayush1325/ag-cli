@@ -10,16 +10,16 @@ def main():
 
 @main.command()
 @click.option("--name", help="Create App.")
-@click.option("--path", default="")
+@click.option("--path", default="", help="Path for creating the app.")
 def app(name, path):
-    app_create(name)
+    app_create(name, path)
 
 
 @main.command()
 @click.option("--name", help="Create Component.")
-@click.option("--path", default="lib/src")
+@click.option("--path", default="lib/src", help="Path for creating the Component.")
 def comp(name, path):
-    comp_create(name)
+    comp_create(name, path)
 
 
 if __name__ == '__main__':
