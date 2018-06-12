@@ -1,6 +1,6 @@
 import click
-from .create import app_create
-from .create import comp_create
+from .app_create import app_create
+from .component_create import comp_create
 
 
 @click.group()
@@ -9,16 +9,17 @@ def main():
 
 
 @main.command()
-@click.option("--app", default=None, help="Create App.")
-@click.option("--comp", default=None, help="Create Component.")
-def create(app, comp):
-    if app:
-        app_create(app)
-    elif comp:
-        comp_create(comp)
-    else:
-        click.echo(
-            """ App or Component parameters needed.\n Refer to --help for more details.""")
+@click.option("--name", help="Create App.")
+@click.option("--path", default="")
+def app(name, path):
+    app_create(name)
+
+
+@main.command()
+@click.option("--name", help="Create Component.")
+@click.option("--path", default="lib/src")
+def comp(name, path):
+    comp_create(name)
 
 
 if __name__ == '__main__':
