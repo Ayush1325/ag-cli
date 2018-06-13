@@ -4,7 +4,9 @@ setup(
     version='0.0.1',
     packages=['ad'],
     install_requires=[
-        'Click',
+        'click',
+        'inflection',
+        'pystache'
     ],
     entry_points={
         'console_scripts': [
