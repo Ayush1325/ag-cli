@@ -2,3 +2,4 @@
 ad.egg-info/
 ad/__pycache__/
 Test/
+.vscode
