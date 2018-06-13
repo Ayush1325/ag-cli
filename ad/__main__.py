@@ -32,7 +32,3 @@ def comp(name, path, classname, selector):
                 (lambda s: s if s else inflection.dasherize(inflection.underscore(name)))(selector))
 
     click.echo("Component %s Created" % name)
-
-
-if __name__ == '__main__':
-    main()
