@@ -13,8 +13,8 @@ def comp_create(name, path, class_name):
     os.mkdir("{0}/{1}".format(path, name))
     dart_hash = {
         'selector': 'my-app',
-        'stylesheet': '{0}_component'.format(name),
-        'html_template': '{0}_component'.format(name),
+        'stylesheet': name,
+        'html_template': name,
         'directives': 'CORE_DIRECTIVES',
         'class': class_name
     }
