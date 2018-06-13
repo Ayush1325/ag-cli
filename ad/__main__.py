@@ -18,8 +18,12 @@ def app(name, path):
 @main.command()
 @click.option("--name", help="Create Component.", required=True)
 @click.option("--path", default="lib/src", help="Path for creating the Component.")
-def comp(name, path):
-    comp_create(name, path)
+@click.option("-classname", default="", help="Class Name of Component.")
+def comp(name, path, classname):
+    if classname:
+        comp_create(name, path, classname)
+    else:
+        comp_create(name, path, name)
 
 
 if __name__ == '__main__':

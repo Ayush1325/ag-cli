@@ -2,18 +2,21 @@ import click
 import os
 import pystache
 import pkg_resources
+import inflection
 
 
-def comp_create(name, path):
+def comp_create(name, path, class_name):
     click.echo("Creating component %s ..." % name)
-    file = "{0}/{1}/{2}".format(path, name, name)
+    name = inflection.underscore(name)
+    class_name = inflection.camelize(class_name)
+    file = "{0}/{1}/{2}_component".format(path, name, name)
     os.mkdir("{0}/{1}".format(path, name))
     dart_hash = {
         'selector': 'my-app',
-        'stylesheet': '%s.css' % name,
-        'html_template': '%s.html' % name,
+        'stylesheet': '{0}_component'.format(name),
+        'html_template': '{0}_component'.format(name),
         'directives': 'CORE_DIRECTIVES',
-        'class': 'test'
+        'class': class_name
     }
     abc = "templates/component/component.dart.mustache"
     filepath = pkg_resources.resource_filename(__name__, abc)
