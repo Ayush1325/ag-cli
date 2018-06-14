@@ -28,3 +28,5 @@ def comp_create(name, path, class_name, selector):
     for file in files:
         generate("{0}/{1}".format(path, name), file,
                  filepath, skeleton[file], hash[file])
+
+    del skeleton, hash, files

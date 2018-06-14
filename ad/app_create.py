@@ -26,6 +26,7 @@ def app_create(name, path, author):
     for file in base_files:
         generate(path, file, filepath,
                  "%s.mustache" % file, base_hash[file])
+    del base_files, base_hash
 
     web_files = ["index.html", "main.dart", "styles.css"]
     web_hash = {
@@ -36,6 +37,7 @@ def app_create(name, path, author):
     for file in web_files:
         generate("{0}/{1}".format(path, "web"), file, "{0}/{1}".format(filepath, "web_skeleton"),
                  "%s.mustache" % file, web_hash[file])
+    del web_files, web_hash
 
     shutil.copy("% s/web_skeleton/favicon.png" % filepath, "%s/web" % path)
 
@@ -47,3 +49,4 @@ def app_create(name, path, author):
     for file in lib_files:
         generate("{0}/{1}".format(path, "lib"), file, "{0}/{1}".format(filepath, "lib_skeleton"),
                  "%s.mustache" % file, {})
+    del lib_files
