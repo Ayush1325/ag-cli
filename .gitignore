@@ -1,5 +1,6 @@
 # Miscellaneous
 ad.egg-info/
 ad/__pycache__/
+ad/helper/__pycache__/
 Test
 .vscode

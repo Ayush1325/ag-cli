@@ -22,7 +22,7 @@ def app(name, path, author):
 
 @main.command()
 @click.option("--name", "-n", help="Create Component.", required=True)
-@click.option("--path", "-p",  default="lib/src/", help="Path for creating the Component.")
+@click.option("--path", "-p",  default="lib/src", help="Path for creating the Component.")
 @click.option("--classname", "-c", default="", help="Class Name of Component.(*Optional)")
 @click.option("--selector", "-s", default="", help="Selector Name of Component.(*Optional)")
 def comp(name, path, classname, selector):

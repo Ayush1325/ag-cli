@@ -1,11 +1,11 @@
 import os
-import pystache
 import pkg_resources
+from .helper.generate import generate
 
 
 def comp_create(name, path, class_name, selector):
-    file = "{0}{1}/{2}_component".format(path, name, name)
-    os.mkdir("{0}{1}".format(path, name))
+    file = "{0}_component".format(name)
+    os.mkdir("{0}/{1}".format(path, name))
     dart_hash = {
         'selector': selector,
         'stylesheet': name,
@@ -13,12 +13,25 @@ def comp_create(name, path, class_name, selector):
         'directives': 'CORE_DIRECTIVES',
         'class': class_name
     }
-    dart_mustach_path = "templates/component/component.dart.mustache"
-    filepath = pkg_resources.resource_filename(__name__, dart_mustach_path)
-    with open("%s.html" % file, "w") as html_file:
-        html_file.write("")
-    with open("%s.css" % file, "w") as css_file:
-        css_file.write("")
-    with open("%s.dart" % file, "w") as dart_file, open(filepath, "r") as dart_mustache:
-        code = pystache.render(dart_mustache.read(), dart_hash)
-        dart_file.write(code)
+    skeleton_files = "templates/component"
+    filepath = pkg_resources.resource_filename(__name__, skeleton_files)
+    files = ["%s.html" % file, "%s.css" % file, "%s.dart" % file]
+    hash = {
+        "%s.html" % file: {},
+        "%s.css" % file: {},
+        "%s.dart" % file: {
+            'selector': selector,
+            'stylesheet': name,
+            'html_template': name,
+            'directives': 'CORE_DIRECTIVES',
+            'class': class_name
+        }
+    }
+    skeleton = {
+        "%s.html" % file: "component.html.mustache",
+        "%s.css" % file: "component.css.mustache",
+        "%s.dart" % file: "component.dart.mustache"
+    }
+    for file in files:
+        generate("{0}/{1}".format(path, name), file,
+                 filepath, skeleton[file], hash[file])
