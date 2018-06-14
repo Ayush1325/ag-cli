@@ -4,8 +4,8 @@ import pkg_resources
 
 
 def comp_create(name, path, class_name, selector):
-    file = "{0}/{1}/{2}_component".format(path, name, name)
-    os.mkdir("{0}/{1}".format(path, name))
+    file = "{0}{1}/{2}_component".format(path, name, name)
+    os.mkdir("{0}{1}".format(path, name))
     dart_hash = {
         'selector': selector,
         'stylesheet': name,
@@ -13,8 +13,8 @@ def comp_create(name, path, class_name, selector):
         'directives': 'CORE_DIRECTIVES',
         'class': class_name
     }
-    abc = "templates/component/component.dart.mustache"
-    filepath = pkg_resources.resource_filename(__name__, abc)
+    dart_mustach_path = "templates/component/component.dart.mustache"
+    filepath = pkg_resources.resource_filename(__name__, dart_mustach_path)
     with open("%s.html" % file, "w") as html_file:
         html_file.write("")
     with open("%s.css" % file, "w") as css_file:
