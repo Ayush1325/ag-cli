@@ -5,6 +5,7 @@ Function to create Angular Dart app.
 import os
 import pkg_resources
 import shutil
+import inflection
 from .helper.generate import generate
 
 
@@ -14,6 +15,7 @@ def app_create(name, path, author):
     # Create app directory.
     os.mkdir(path)
 
+    name = inflection.underscore(name)
     # Create other directories inside the app.
     os.mkdir("%s/lib" % path)
     os.mkdir("%s/test" % path)
