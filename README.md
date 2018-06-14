@@ -16,4 +16,4 @@ To install in normal mode replace the contents of install script with the one be
 pip3 install .
 ```
 
-## Sill in alpha. Now full components can be generated.
+## Sill in alpha. Now full apps can be generated with some file_name limitations.
