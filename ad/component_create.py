@@ -6,13 +6,6 @@ from .helper.generate import generate
 def comp_create(name, path, class_name, selector):
     file = "{0}_component".format(name)
     os.mkdir("{0}/{1}".format(path, name))
-    dart_hash = {
-        'selector': selector,
-        'stylesheet': name,
-        'html_template': name,
-        'directives': 'CORE_DIRECTIVES',
-        'class': class_name
-    }
     skeleton_files = "templates/component"
     filepath = pkg_resources.resource_filename(__name__, skeleton_files)
     files = ["%s.html" % file, "%s.css" % file, "%s.dart" % file]
