@@ -1,3 +1,7 @@
+"""
+Angular Dart CLI package.
+"""
+
 import click
 import inflection
 import getpass
@@ -9,6 +13,8 @@ from .component_create import comp_create
 @click.group()
 def main():
     pass
+
+# Command to generate skeleton angular dart application.
 
 
 @main.command()
@@ -22,6 +28,8 @@ def app(name, path, author, pubget):
     click.echo("App %s Created" % name)
     if pubget:
         subprocess.run('pub get', shell=True)
+
+# Command to generate angular dart component.
 
 
 @main.command()

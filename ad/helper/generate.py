@@ -1,3 +1,7 @@
+"""
+Function to generate files.
+"""
+
 import pystache
 
 
