@@ -1,6 +1,7 @@
 import click
 import inflection
 import getpass
+import subprocess
 from .app_create import app_create
 from .component_create import comp_create
 
@@ -14,10 +15,13 @@ def main():
 @click.option("--name", "-n", help="Create App.", required=True)
 @click.option("--path", "-p", default="", help="Path for creating the app.")
 @click.option("--author", "-a", default=getpass.getuser(), help="Author Name.")
-def app(name, path, author):
+@click.option("--pubget", "-pg", is_flag=True, help="Run pub get after generating the project.")
+def app(name, path, author, pubget):
     click.echo("Creating name %s ..." % name)
     app_create(name, path, inflection.humanize(author))
     click.echo("App %s Created" % name)
+    if pubget:
+        subprocess.run('pub get', shell=True)
 
 
 @main.command()

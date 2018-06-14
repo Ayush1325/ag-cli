@@ -50,3 +50,5 @@ def app_create(name, path, author):
         generate("{0}/{1}".format(path, "lib"), file, "{0}/{1}".format(filepath, "lib_skeleton"),
                  "%s.mustache" % file, {})
     del lib_files
+
+    os.chdir(path)
